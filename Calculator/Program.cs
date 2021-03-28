@@ -7,10 +7,16 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Enum.GetName(typeof(CalculationType), CalculationType.ADDITION));
+            var isRunning = true;
+                    
             models.Calculator calc = new models.Calculator();
 
             Console.WriteLine("welcome to our calculator");
+
+            while (isRunning)
+            {
+
+            Console.WriteLine("Start your calculation.");
             Console.WriteLine("number 1:");
             string number1Input = Console.ReadLine();
             Console.WriteLine("number 2:");
@@ -45,6 +51,14 @@ namespace Calculator
             if (calculationType.HasValue)
                 Console.WriteLine(calc.Calculate(number1, number2, calculationType.Value));
 
+                Console.WriteLine("Do you want to continue? y/n");
+                string choice = Console.ReadLine();
+
+                if (choice.ToLower().Equals("n"))
+                {
+                    isRunning = false;
+                }
+            }
         }
     }
 }
